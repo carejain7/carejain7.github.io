@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자인재가노인복지센터 | 집으로 찾아가는 방문요양</title>
+<meta name="description" content="자인재가노인복지센터 - 어르신의 하루에 다정한 손길이 찾아가는 방문요양 서비스">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F8F1E4;
+    --bg-alt: #FDFAF4;
+    --ink: #3B3226;
+    --ink-soft: #7A6E5D;
+    --sage: #7E9470;
+    --sage-deep: #55704A;
+    --apricot: #E8A659;
+    --apricot-deep: #CE8A3C;
+    --blush: #F0C9B3;
+    --line: #E4D9C6;
+    --radius: 22px;
+    --shadow: 0 18px 40px -22px rgba(59, 50, 38, 0.35);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+  h1,h2,h3{
+    font-family: "Gowun Batang", serif;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 0.82rem;
+    font-weight:600;
+    letter-spacing: 0.14em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 18px;
+    height: 1px;
+    background: var(--sage-deep);
+  }
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  section{ padding: 108px 0; }
+  @media (max-width: 720px){
+    section{ padding: 72px 0; }
+    .wrap{ padding: 0 20px; }
+  }
+
+  /* Header */
+  header{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: rgba(248, 241, 228, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .logo{
+    font-family: "Gowun Batang", serif;
+    font-size: 1.28rem;
+    font-weight: 700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo-mark{
+    width: 34px;
+    height: 34px;
+    flex-shrink:0;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 30px;
+    margin:0;
+    padding:0;
+    font-size: 0.94rem;
+  }
+  nav a{
+    text-decoration:none;
+    color: var(--ink-soft);
+    transition: color .2s ease;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a:focus-visible{ color: var(--sage-deep); border-bottom-color: var(--apricot); }
+  .nav-right{ display:flex; align-items:center; gap:22px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration:none;
+    cursor:pointer;
+    border: 1px solid transparent;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:focus-visible{ outline: 3px solid var(--sage); outline-offset: 2px; }
+  .btn-primary{
+    background: var(--sage-deep);
+    color: #fff;
+    box-shadow: 0 10px 24px -10px rgba(85,112,74,0.55);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px -10px rgba(85,112,74,0.65); }
+  .btn-ghost{
+    background: transparent;
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: var(--ink); color: #fff; }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--ink); margin:5px 0; }
+
+  @media (max-width: 860px){
+    nav ul{ display:none; }
+    .nav-right .btn-ghost{ display:none; }
+    .menu-toggle{ display:block; }
+  }
+
+  /* Hero */
+  .hero{
+    padding-top: 84px;
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items:center;
+  }
+  @media (max-width: 900px){
+    .hero{ grid-template-columns: 1fr; padding-top: 48px; }
+    .hero-art{ order:-1; }
+  }
+  .hero h1{
+    font-size: clamp(2.1rem, 4.2vw, 3.15rem);
+    line-height: 1.32;
+    margin: 18px 0 22px;
+  }
+  .hero p{
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    max-width: 46ch;
+    margin-bottom: 34px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-art{
+    position:relative;
+    aspect-ratio: 1/1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .stat-row{
+    margin-top: 52px;
+    display:flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .stat b{
+    display:block;
+    font-family:"Gowun Batang", serif;
+    font-size: 1.7rem;
+    color: var(--sage-deep);
+  }
+  .stat span{ font-size: 0.86rem; color: var(--ink-soft); }
+
+  /* Values */
+  .values{ background: var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .values-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 44px;
+  }
+  @media (max-width: 780px){ .values-grid{ grid-template-columns: 1fr; } }
+  .value-card{
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+  }
+  .value-card .num{
+    font-family:"Gowun Batang", serif;
+    font-size: 0.95rem;
+    color: var(--apricot-deep);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display:block;
+  }
+  .value-card h3{ font-size: 1.28rem; margin-bottom: 10px; }
+  .value-card p{ color: var(--ink-soft); font-size: 0.96rem; margin:0; }
+
+  /* Services */
+  .section-head{ max-width: 640px; }
+  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 14px 0 16px; }
+  .section-head p{ color: var(--ink-soft); }
+
+  .service-grid{
+    margin-top: 48px;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 780px){ .service-grid{ grid-template-columns: 1fr; } }
+  .service-card{
+    display:flex;
+    gap: 20px;
+    padding: 28px;
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: box-shadow .2s ease, transform .2s ease;
+  }
+  .service-card:hover{ box-shadow: var(--shadow); transform: translateY(-3px); }
+  .service-icon{
+    width: 52px; height:52px; flex-shrink:0;
+    border-radius: 16px;
+    background: var(--blush);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .service-card h3{ font-size: 1.14rem; margin-bottom: 8px; }
+  .service-card p{ color: var(--ink-soft); font-size: 0.94rem; margin:0; }
+
+  /* Journey (signature element) */
+  .journey{ background: var(--sage-deep); color: #FBF6EC; border-radius: 36px; margin: 0 28px; padding: 76px 6px; }
+  @media (max-width:720px){ .journey{ margin:0; border-radius:0; padding: 56px 0; } }
+  .journey .wrap{ max-width: 1120px; }
+  .journey .eyebrow{ color: var(--blush); }
+  .journey .eyebrow::before{ background: var(--blush); }
+  .journey h2{ color: #FBF6EC; font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 14px 0 10px; }
+  .journey > .wrap > p{ color: #E7DCC6; max-width: 56ch; margin-bottom: 56px; }
+
+  .journey-track{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .journey-track::before{
+    content:"";
+    position:absolute;
+    top: 26px;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(251,246,236,0.45) 0 8px, transparent 8px 16px);
+  }
+  @media (max-width: 900px){
+    .journey-track{ grid-template-columns: 1fr; gap: 34px; }
+    .journey-track::before{ display:none; }
+  }
+  .journey-step{ text-align:left; padding-right: 14px; }
+  .journey-step .dot{
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #FBF6EC;
+    color: var(--sage-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Gowun Batang", serif;
+    font-weight:700;
+    margin-bottom: 20px;
+    position:relative;
+    z-index:1;
+  }
+  .journey-step h3{ color:#FBF6EC; font-size: 1.04rem; margin-bottom: 8px; font-family:"Noto Sans KR",sans-serif; font-weight:600; }
+  .journey-step p{ color:#E7DCC6; font-size: 0.88rem; margin:0; }
+
+  /* Process */
+  .process-list{
+    margin-top: 48px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px){ .process-list{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .process-list{ grid-template-columns: 1fr; } }
+  .process-item{
+    border-top: 3px solid var(--apricot);
+    padding-top: 18px;
+  }
+  .process-item .step-no{ font-family:"Gowun Batang", serif; color: var(--apricot-deep); font-size:0.85rem; font-weight:700; }
+  .process-item h3{ font-size: 1.06rem; margin: 8px 0 8px; }
+  .process-item p{ color: var(--ink-soft); font-size: 0.9rem; margin:0; }
+
+  /* Contact */
+  .contact{ background: var(--bg-alt); border-top:1px solid var(--line); }
+  .contact-grid{
+    margin-top: 44px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items:start;
+  }
+  @media (max-width: 860px){ .contact-grid{ grid-template-columns: 1fr; } }
+  .info-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:22px; }
+  .info-list li{ display:flex; gap:16px; }
+  .info-list .ico{
+    width:40px; height:40px; border-radius: 12px; flex-shrink:0;
+    background: var(--blush); display:flex; align-items:center; justify-content:center;
+  }
+  .info-list b{ display:block; font-size:0.85rem; color: var(--ink-soft); font-weight:500; margin-bottom:3px; }
+  .info-list span{ font-size: 1.02rem; }
+  .map-box{
+    border-radius: var(--radius);
+    border: 1px dashed var(--sage);
+    background: repeating-linear-gradient(45deg, rgba(126,148,112,0.06) 0 12px, transparent 12px 24px);
+    min-height: 220px;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-align:center;
+    padding: 24px;
+  }
+
+  form{
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  form h3{ font-size:1.2rem; margin-bottom:4px; }
+  form p.form-sub{ color: var(--ink-soft); font-size:0.88rem; margin:0 0 8px; }
+  label{ font-size: 0.86rem; font-weight:600; color: var(--ink-soft); display:block; margin-bottom:6px; }
+  input, textarea{
+    width:100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.96rem;
+    color: var(--ink);
+  }
+  input:focus-visible, textarea:focus-visible{ outline: 2px solid var(--sage); outline-offset:1px; }
+  textarea{ resize: vertical; min-height: 90px; }
+  form .btn{ margin-top: 6px; align-self:flex-start; }
+  .form-note{ font-size:0.78rem; color: var(--ink-soft); }
+
+  footer{
+    padding: 44px 0 32px;
+    border-top: 1px solid var(--line);
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+  }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 12px; }
+
+  [data-reveal]{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  [data-reveal].is-visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <path d="M20 4 L36 16 V35 H24 V24 H16 V35 H4 V16 Z" fill="#7E9470"/>
+        <circle cx="20" cy="18" r="3.4" fill="#E8A659"/>
+      </svg>
+      자인재가노인복지센터
+    </div>
+    <nav aria-label="주 메뉴">
+      <ul>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#services">서비스</a></li>
+        <li><a href="#journey">방문 이야기</a></li>
+        <li><a href="#process">이용안내</a></li>
+        <li><a href="#contact">오시는 길</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-ghost">전화 상담</a>
+      <a href="#contact" class="btn btn-primary">상담 신청</a>
+      <button class="menu-toggle" aria-label="메뉴 열기" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">재가 방문요양센터</span>
+      <h1>어르신의 하루에,<br>다정한 손길이 찾아갑니다</h1>
+      <p>자인재가노인복지센터는 집에서 편안하게 받는 방문요양 서비스를 제공합니다. 오랜 경력의 요양보호사가 어르신 한 분 한 분을 가족처럼 살펴드립니다.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">무료 상담 신청하기</a>
+        <a href="#services" class="btn btn-ghost">서비스 살펴보기</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>1:1</b><span>맞춤 돌봄 계획</span></div>
+        <div class="stat"><b>장기요양보험</b><span>적용 가능</span></div>
+        <div class="stat"><b>자격증 보유</b><span>전문 요양보호사</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 480 480" fill="none">
+        <circle cx="240" cy="240" r="220" fill="#F0C9B3" opacity="0.45"/>
+        <rect x="120" y="190" width="240" height="180" rx="14" fill="#FDFAF4" stroke="#E4D9C6"/>
+        <path d="M100 210 L240 100 L380 210" stroke="#7E9470" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="215" y="290" width="50" height="80" rx="6" fill="#7E9470"/>
+        <rect x="150" y="240" width="55" height="55" rx="8" fill="#E8A659" opacity="0.9"/>
+        <circle cx="177" cy="267" r="10" fill="#FDFAF4"/>
+        <rect x="275" y="240" width="55" height="55" rx="8" fill="#7E9470" opacity="0.85"/>
+        <circle cx="302" cy="267" r="10" fill="#FDFAF4"/>
+        <path d="M177 267 Q240 320 302 267" stroke="#E8A659" stroke-width="5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values" id="about">
+    <div class="wrap">
+      <span class="eyebrow">우리가 지키는 약속</span>
+      <div class="values-grid">
+        <div class="value-card" data-reveal>
+          <span class="num">신뢰</span>
+          <h3>자격을 갖춘 요양보호사</h3>
+          <p>국가 자격을 보유한 요양보호사가 정해진 절차에 따라 안전하게 돌봄을 제공합니다.</p>
+        </div>
+        <div class="value-card" data-reveal>
+          <span class="num">정성</span>
+          <h3>가족처럼 살피는 돌봄</h3>
+          <p>같은 요양보호사가 꾸준히 방문해 어르신의 변화와 습관을 세심하게 챙깁니다.</p>
+        </div>
+        <div class="value-card" data-reveal>
+          <span class="num">안심</span>
+          <h3>장기요양보험 적용</h3>
+          <p>장기요양등급에 따라 보험 혜택을 받을 수 있도록 신청부터 꼼꼼히 도와드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">방문요양 서비스</span>
+        <h2>어르신께 필요한 순간마다, 함께합니다</h2>
+        <p>신체 활동부터 집안일, 말벗까지. 하루의 크고 작은 일들을 요양보호사가 곁에서 도와드립니다.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="7" r="4" stroke="#5C4A34" stroke-width="1.6"/><path d="M4 22c1.5-5 5-7 9-7s7.5 2 9 7" stroke="#5C4A34" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3>신체 활동 지원</h3>
+            <p>세면, 식사, 배설, 이동을 도와드리며 안전하고 편안한 일상을 지켜드립니다.</p>
+          </div>
+        </div>
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="5" y="9" width="16" height="12" rx="2" stroke="#5C4A34" stroke-width="1.6"/><path d="M9 9V6a4 4 0 0 1 8 0v3" stroke="#5C4A34" stroke-width="1.6"/></svg>
+          </div>
+          <div>
+            <h3>가사 활동 지원</h3>
+            <p>청소, 세탁, 식사 준비 등 일상생활에 필요한 집안일을 함께 살펴드립니다.</p>
+          </div>
+        </div>
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 13c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-1.6 0-3-.4-4.3-1.1L4 22l1.2-4.6C4.4 16 4 14.5 4 13Z" stroke="#5C4A34" stroke-width="1.6"/></svg>
+          </div>
+          <div>
+            <h3>정서 지원</h3>
+            <p>대화, 산책, 소일거리를 함께하며 어르신의 마음을 살피고 말벗이 되어드립니다.</p>
+          </div>
+        </div>
+        <div class="service-card" data-reveal>
+          <div class="service-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4v18M13 4l6 4M13 4L7 8" stroke="#5C4A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="22" r="1.6" fill="#5C4A34"/></svg>
+          </div>
+          <div>
+            <h3>외출 동행</h3>
+            <p>병원 진료, 은행 업무 등 외출이 필요한 순간에 안전하게 동행해 드립니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY (signature) -->
+  <section id="journey">
+    <div class="journey">
+      <div class="wrap">
+        <span class="eyebrow">하루의 방문</span>
+        <h2>다섯 장면으로 만나는 방문요양</h2>
+        <p>요양보호사가 댁에 도착한 순간부터 다음 방문을 약속하기까지, 실제 방문이 어떻게 이루어지는지 소개합니다.</p>
+        <div class="journey-track">
+          <div class="journey-step" data-reveal>
+            <div class="dot">1</div>
+            <h3>도착과 인사</h3>
+            <p>정해진 시간에 방문해 어르신의 오늘 컨디션을 먼저 여쭙습니다.</p>
+          </div>
+          <div class="journey-step" data-reveal>
+            <div class="dot">2</div>
+            <h3>신체 활동 지원</h3>
+            <p>세면과 식사, 이동을 도우며 편안한 하루를 시작합니다.</p>
+          </div>
+          <div class="journey-step" data-reveal>
+            <div class="dot">3</div>
+            <h3>집안 정돈</h3>
+            <p>청소와 정리 등 가벼운 가사를 함께 챙깁니다.</p>
+          </div>
+          <div class="journey-step" data-reveal>
+            <div class="dot">4</div>
+            <h3>함께하는 시간</h3>
+            <p>대화와 산책, 소일거리로 정서적인 교감을 나눕니다.</p>
+          </div>
+          <div class="journey-step" data-reveal>
+            <div class="dot">5</div>
+            <h3>다음 방문 약속</h3>
+            <p>오늘의 상태를 기록하고 다음 방문 일정을 안내해 드립니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">이용 안내</span>
+        <h2>서비스를 시작하는 방법</h2>
+        <p>상담 신청부터 실제 방문까지, 네 단계면 충분합니다.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-item" data-reveal>
+          <span class="step-no">STEP 1</span>
+          <h3>상담 신청</h3>
+          <p>전화 또는 아래 신청서로 편하게 문의해 주세요.</p>
+        </div>
+        <div class="process-item" data-reveal>
+          <span class="step-no">STEP 2</span>
+          <h3>등급 확인 안내</h3>
+          <p>장기요양등급이 없다면 신청 절차를 안내해 드립니다.</p>
+        </div>
+        <div class="process-item" data-reveal>
+          <span class="step-no">STEP 3</span>
+          <h3>방문 상담</h3>
+          <p>담당자가 방문해 어르신께 맞는 돌봄 계획을 세웁니다.</p>
+        </div>
+        <div class="process-item" data-reveal>
+          <span class="step-no">STEP 4</span>
+          <h3>서비스 시작</h3>
+          <p>정해진 요일과 시간에 요양보호사가 방문을 시작합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">오시는 길 · 문의</span>
+        <h2>지금 편하게 상담을 신청해 보세요</h2>
+        <p>전화 또는 신청서로 문의를 남겨주시면 빠르게 연락드립니다.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <ul class="info-list">
+            <li>
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C8.6 18 2 11.4 2 5a2 2 0 0 1 2-2Z" stroke="#5C4A34" stroke-width="1.5"/></svg></div>
+              <div><b>전화 문의</b><span>[대표번호를 입력해 주세요] · 평일 09:00–18:00</span></div>
+            </li>
+            <li>
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 18s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z" stroke="#5C4A34" stroke-width="1.5"/><circle cx="10" cy="8" r="2.2" stroke="#5C4A34" stroke-width="1.5"/></svg></div>
+              <div><b>오시는 길</b><span>[센터 주소를 입력해 주세요]</span></div>
+            </li>
+            <li>
+              <div class="ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="#5C4A34" stroke-width="1.5"/><path d="M3 6l7 5 7-5" stroke="#5C4A34" stroke-width="1.5"/></svg></div>
+              <div><b>이메일</b><span>[센터 이메일 주소를 입력해 주세요]</span></div>
+            </li>
+          </ul>
+          <div class="map-box" style="margin-top:26px;">
+            지도 영역 — 네이버 지도 또는 카카오맵 삽입 위치<br>(스마트플레이스 등록 주소와 연동 추천)
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('상담 신청이 접수되었습니다. 곧 연락드리겠습니다.'); this.reset();">
+          <h3>상담 신청서</h3>
+          <p class="form-sub">남겨주시면 담당자가 순서대로 연락드립니다.</p>
+          <div>
+            <label for="name">보호자 성함</label>
+            <input id="name" type="text" required>
+          </div>
+          <div>
+            <label for="phone">연락처</label>
+            <input id="phone" type="tel" placeholder="010-0000-0000" required>
+          </div>
+          <div>
+            <label for="msg">어르신 상태 및 문의 내용</label>
+            <textarea id="msg" placeholder="예: 거동이 불편하신 아버지를 위한 방문요양을 문의드립니다."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">상담 신청 보내기</button>
+          <span class="form-note">※ 이 양식은 시안이며, 실제 접수를 위해서는 이메일 전송 또는 관리자 연동 설정이 필요합니다.</span>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 자인재가노인복지센터. All rights reserved.</span>
+    <span>사업자등록번호 [입력 필요] · 시설장 [입력 필요]</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+
+  // Mobile menu (simple toggle -> reveals nav list as dropdown)
+  const toggle = document.getElementById('menuToggle');
+  const navList = document.querySelector('nav ul');
+  toggle?.addEventListener('click', () => {
+    const open = navList.style.display === 'flex';
+    navList.style.display = open ? 'none' : 'flex';
+    navList.style.flexDirection = 'column';
+    navList.style.position = 'absolute';
+    navList.style.top = '64px';
+    navList.style.right = '20px';
+    navList.style.background = '#FDFAF4';
+    navList.style.border = '1px solid #E4D9C6';
+    navList.style.borderRadius = '16px';
+    navList.style.padding = '14px 20px';
+    navList.style.gap = '14px';
+    navList.style.boxShadow = '0 18px 40px -22px rgba(59,50,38,0.35)';
+  });
+</script>
+
+</body>
+</html>
