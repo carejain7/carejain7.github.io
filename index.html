@@ -227,16 +227,32 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#B9835A&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#B9835A&quot;, &quot;#8FA679&quot;, &quot;#C98B6B&quot;, &quot;#A8927A&quot;], &quot;section&quot;: &quot;테마&quot;}, &quot;heroImagePosition&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;right&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;right&quot;, &quot;left&quot;], &quot;section&quot;: &quot;레이아웃&quot;}, &quot;showTestimonial&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;섹션&quot;}}">
 class Component extends DCLogic {
-  state = { isMobile: false, menuOpen: false };
+  state = { isMobile: false, menuOpen: false, countProgress: 0 };
 
   componentDidMount() {
     this.checkSize();
     this._onResize = () => this.checkSize();
     window.addEventListener('resize', this._onResize);
+    this.startCountUp();
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._onResize);
+    if (this._countRaf) cancelAnimationFrame(this._countRaf);
+  }
+
+  startCountUp() {
+    const duration = 1600;
+    const start = performance.now();
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+    const tick = (now) => {
+      const raw = Math.min(1, (now - start) / duration);
+      this.setState({ countProgress: easeOutCubic(raw) });
+      if (raw < 1) {
+        this._countRaf = requestAnimationFrame(tick);
+      }
+    };
+    this._countRaf = requestAnimationFrame(tick);
   }
 
   checkSize() {
@@ -415,10 +431,10 @@ class Component extends DCLogic {
       navSubtitleDisplay, navMenuDisplay, hamburgerDisplay, mobileMenuDisplay,
       showTestimonial: this.props.showTestimonial ?? true,
       stats: [
-        { value: '12년', label: '센터 운영' },
-        { value: '850+', label: '누적 이용 가정' },
-        { value: '4.9', label: '보호자 만족도' },
-        { value: '24시간', label: '상담 응대' },
+        { value: Math.round(12 * this.state.countProgress) + '년', label: '센터 운영' },
+        { value: Math.round(850 * this.state.countProgress) + '+', label: '누적 이용 가정' },
+        { value: (4.9 * this.state.countProgress).toFixed(1), label: '보호자 만족도' },
+        { value: Math.round(24 * this.state.countProgress) + '시간', label: '상담 응대' },
       ],
       services: [
         { icon: 'images/icon-care.png', tint: '#F2E2D2', title: '방문요양', desc: '식사, 세면, 이동 등 일상생활을 곁에서 함께합니다.' },
