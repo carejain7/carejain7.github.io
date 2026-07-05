@@ -74,7 +74,7 @@
   </div>
 
   <!-- HERO -->
-  <div id="about" style="display:grid; grid-template-columns:{{ heroCols }}; gap:{{ heroGap }}; align-items:center; padding:{{ heroPad }}; max-width:1360px; margin:0 auto; scroll-margin-top:90px;">
+  <div style="display:grid; grid-template-columns:{{ heroCols }}; gap:{{ heroGap }}; align-items:center; padding:{{ heroPad }}; max-width:1360px; margin:0 auto;">
     <div style="order:{{ heroTextOrder }}; animation:fadeUp .7s ease both;">
       <div style="display:inline-block; padding:7px 16px; border-radius:999px; background:{{ accentTint }}; color:{{ accentDeep }}; font-size:13.5px; font-weight:500; margin-bottom:22px;">방문요양 · 방문목욕 · 방문간호</div>
       <div style="font-family:'Noto Serif KR',serif; font-weight:700; font-size:{{ heroTitleSize }}; line-height:1.32; letter-spacing:-0.5px; margin-bottom:22px;">
@@ -104,6 +104,30 @@
     </sc-for>
   </div>
 
+  <!-- ABOUT / BRAND STORY -->
+  <div id="about" style="padding:{{ sectionPadV }}; max-width:900px; margin:0 auto; text-align:center; scroll-margin-top:90px;">
+    <div style="font-size:14px; color:{{ accentDeep }}; font-weight:600; letter-spacing:0.5px; margin-bottom:10px;">ABOUT</div>
+    <div style="font-family:'Noto Serif KR',serif; font-weight:700; font-size:{{ sectionTitleSize }}; margin-bottom:{{ sectionHeadMb }};">센터소개</div>
+    <div style="display:flex; justify-content:center; gap:{{ hanjaGap }}; margin-bottom:32px; flex-wrap:wrap;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:{{ hanjaBoxSize }}; height:{{ hanjaBoxSize }}; border-radius:20px; background:{{ accentTint }}; display:flex; align-items:center; justify-content:center; font-family:'Noto Serif KR',serif; font-weight:700; font-size:{{ hanjaCharSize }}; color:{{ accentDeep }}; border:1px solid {{ hairline }};">慈</div>
+        <div style="font-size:15px; font-weight:600;">사랑 자</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:{{ hanjaBoxSize }}; height:{{ hanjaBoxSize }}; border-radius:20px; background:{{ accentTint }}; display:flex; align-items:center; justify-content:center; font-family:'Noto Serif KR',serif; font-weight:700; font-size:{{ hanjaCharSize }}; color:{{ accentDeep }}; border:1px solid {{ hairline }};">仁</div>
+        <div style="font-size:15px; font-weight:600;">공경할 인</div>
+      </div>
+    </div>
+    <div style="font-family:'Noto Serif KR',serif; font-size:{{ testimonialTextSize }}; line-height:1.7; font-weight:500; color:{{ ink }}; margin-bottom:14px;">
+      "자인(慈仁)"은 사랑 자(慈), 공경할 인(仁) —<br>
+      사랑과 공경으로 어르신을 모시겠다는 뜻을 담고 있습니다.
+    </div>
+    <div style="font-size:15px; line-height:1.8; color:{{ inkSoft }};">
+      이름에 담긴 마음 그대로, 한 분 한 분을 가족처럼 사랑하고<br>
+      어른으로서 존중과 공경을 다해 돌보겠습니다.
+    </div>
+  </div>
+
   <!-- SERVICES -->
   <div id="services" style="padding:{{ sectionPadV }}; max-width:1360px; margin:0 auto; scroll-margin-top:90px;">
     <div style="text-align:center; margin-bottom:{{ sectionHeadMb }};">
@@ -112,8 +136,8 @@
     </div>
     <div style="display:grid; grid-template-columns:{{ gridCols }}; gap:{{ gridGap }};">
       <sc-for list="{{ services }}" as="svc" hint-placeholder-count="3">
-        <div style="background:{{ card }}; border:1px solid {{ hairline }}; border-radius:20px; padding:34px 30px; animation:fadeUp .6s ease both;">
-          <div style="width:64px; height:64px; border-radius:16px; background:{{ svc.tint }}; display:flex; align-items:center; justify-content:center; margin-bottom:20px; padding:10px;">
+        <div style="background:{{ card }}; border:1px solid {{ hairline }}; border-radius:20px; padding:34px 30px; animation:fadeUp .6s ease both; text-align:{{ serviceCardAlign }};">
+          <div style="width:64px; height:64px; border-radius:16px; background:{{ svc.tint }}; display:flex; align-items:center; justify-content:center; margin:{{ serviceIconMargin }}; padding:10px;">
             <img src="{{ svc.icon }}" alt="{{ svc.title }}" style="width:100%; height:100%; object-fit:contain;">
           </div>
           <div style="font-family:'Noto Serif KR',serif; font-weight:700; font-size:19px; margin-bottom:10px;">{{ svc.title }}</div>
@@ -170,7 +194,7 @@
     </div>
     <div style="display:{{ ctaBtnDisplay }}; flex-direction:{{ ctaBtnDir }}; gap:14px;">
       <div style="padding:16px 34px; background:{{ accent }}; color:#fff; border-radius:12px; font-weight:600; font-size:16px; text-align:center; width:{{ ctaBtnWidth }}; box-sizing:border-box;">☎ 062-655-2750</div>
-      <div style="padding:16px 34px; background:transparent; border:1px solid {{ hairline }}; border-radius:12px; font-weight:500; font-size:16px; text-align:center; width:{{ ctaBtnWidth }}; box-sizing:border-box;">온라인 상담 예약</div>
+      <a href="kakaotalk://msg/chat?phone_number=01053851758" style="padding:16px 34px; background:transparent; border:1px solid {{ hairline }}; border-radius:12px; font-weight:500; font-size:16px; text-align:center; width:{{ ctaBtnWidth }}; box-sizing:border-box; color:inherit; text-decoration:none; display:block;">카톡 상담하기</a>
     </div>
   </div>
 
@@ -385,6 +409,11 @@ class Component extends DCLogic {
     const locationGridCols = isMobile ? '1fr' : '1.1fr 0.9fr';
     const locationCardPad = isMobile ? '24px' : '34px';
     const contactGridCols = isMobile ? '1fr' : '1fr 1fr';
+    const hanjaGap = isMobile ? '24px' : '48px';
+    const hanjaBoxSize = isMobile ? '84px' : '108px';
+    const hanjaCharSize = isMobile ? '38px' : '48px';
+    const serviceCardAlign = isMobile ? 'center' : 'left';
+    const serviceIconMargin = isMobile ? '0 auto 20px' : '0 0 20px';
     const footerPadV = isMobile ? '28px 20px 20px' : '32px 56px 24px';
     const footerBottomPadV = isMobile ? '16px 20px 28px' : '20px 56px 36px';
     const footerLogoGap = isMobile ? '24px' : '40px';
@@ -437,7 +466,8 @@ class Component extends DCLogic {
       gridCols, gridGap, sceneGridGap,
       testimonialPad, testimonialTextSize,
       ctaPad, ctaTitleSize, ctaBtnDir, ctaBtnDisplay, ctaBtnWidth,
-      locationGridCols, locationCardPad, contactGridCols,
+      locationGridCols, locationCardPad, contactGridCols, hanjaGap, hanjaBoxSize, hanjaCharSize,
+      serviceCardAlign, serviceIconMargin,
       footerPadV, footerBottomPadV, footerLogoGap, footerBottomDir, footerBottomAlign, footerBottomTextAlign,
       navSubtitleDisplay, navMenuDisplay, hamburgerDisplay, mobileMenuDisplay,
       showTestimonial: this.props.showTestimonial ?? true,
