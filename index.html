@@ -97,7 +97,7 @@
   </div>
 
   <!-- TRUST STRIP -->
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:{{ trustGap }}; padding:{{ trustPadV }}; background:{{ panel }}; border-top:1px solid {{ hairline }}; border-bottom:1px solid {{ hairline }};">
+  <div style="display:{{ trustDisplay }}; grid-template-columns:{{ trustGridCols }}; flex-wrap:wrap; justify-content:center; gap:{{ trustGap }}; padding:{{ trustPadV }}; background:{{ panel }}; border-top:1px solid {{ hairline }}; border-bottom:1px solid {{ hairline }};">
     <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
       <div style="text-align:center;">
         <div style="font-family:'Noto Serif KR',serif; font-weight:700; font-size:{{ trustValueSize }}; color:{{ accentDeep }};">{{ s.value }}</div>
@@ -425,7 +425,9 @@ class Component extends DCLogic {
     const sectionTitleSize = isMobile ? '24px' : '32px';
     const sectionHeadMb = isMobile ? '32px' : '56px';
     const trustPadV = isMobile ? '22px 20px' : '30px 56px';
-    const trustGap = isMobile ? '22px 28px' : '64px';
+    const trustGap = isMobile ? '20px 12px' : '64px';
+    const trustGridCols = isMobile ? 'repeat(2, 1fr)' : 'none';
+    const trustDisplay = isMobile ? 'grid' : 'flex';
     const trustValueSize = isMobile ? '20px' : '26px';
     const gridCols = isMobile ? '1fr' : 'repeat(2, 1fr)';
     const gridGap = isMobile ? '18px' : '28px';
@@ -494,7 +496,7 @@ class Component extends DCLogic {
       isMobile, menuOpen, toggleMenu, mapRef: this.mapRef,
       padX, navPadY, heroPad, heroTitleSize, heroBodySize, heroGap, heroBtnDir, heroBtnWidth,
       sectionPadV, sectionTitleSize, sectionHeadMb,
-      trustPadV, trustGap, trustValueSize,
+      trustPadV, trustGap, trustValueSize, trustGridCols, trustDisplay,
       gridCols, gridGap, sceneGridGap,
       testimonialPad, testimonialTextSize,
       ctaPad, ctaTitleSize, ctaBtnDir, ctaBtnDisplay, ctaBtnWidth,
@@ -504,10 +506,10 @@ class Component extends DCLogic {
       navSubtitleDisplay, navMenuDisplay, hamburgerDisplay, mobileMenuDisplay,
       showTestimonial: this.props.showTestimonial ?? true,
       stats: [
-        { value: Math.round(12 * this.state.countProgress) + '년', label: '센터 운영' },
+        { value: Math.round(7 * this.state.countProgress) + '년', label: '센터 운영' },
         { value: Math.round(850 * this.state.countProgress) + '+', label: '누적 이용 가정' },
-        { value: (4.9 * this.state.countProgress).toFixed(1), label: '보호자 만족도' },
-        { value: Math.round(24 * this.state.countProgress) + '시간', label: '상담 응대' },
+        { value: (5.0 * this.state.countProgress).toFixed(1), label: '보호자 만족도' },
+        { value: Math.round(55 * this.state.countProgress) + '명', label: '요양보호사' },
       ],
       services: [
         { icon: 'images/icon-care.png', tint: '#F2E2D2', title: '방문요양', desc: '식사, 세면, 이동 등 일상생활을 곁에서 함께합니다.' },
